@@ -1,0 +1,39 @@
+;
+; TESTESS.asm
+;
+; Created: 10/23/2025 8:36:49 PM
+; Author : pedro
+;
+inicio:
+	LDI R16, 0B11110000
+	OUT DDRD, R16
+	LDI R16, 0XFF
+	OUT PORTD, R16
+
+
+atraso:
+	
+	LDI R22, 52
+
+L1:	LDI R19, 2;1
+
+L2:	LDI R20, 250;1
+
+L3: LDI R21, 200 ;1
+
+L4: DEC R21;1
+	BRNE L4;1/2
+
+	DEC R20;1
+	BRNE L3;1/2
+
+	DEC R19;1
+	BRNE L2
+
+	DEC R22
+	BRNE L1
+
+	COM R16
+	OUT PORTD, R16
+	RJMP ATRASO
+
